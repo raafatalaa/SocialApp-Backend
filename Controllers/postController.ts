@@ -1,5 +1,6 @@
 import express from 'express';
 import Post from '../Models/post';
+import User from '../Models/user';
 
 const createPost = async (req : express.Request, res : express.Response) =>{
     const post =await Post.create({...req.body,image: req.file?.path}); 
@@ -9,9 +10,9 @@ const createPost = async (req : express.Request, res : express.Response) =>{
 const updatePost =async (req : express.Request, res : express.Response)=>{
     const { id } = req.params;
     const { body, image,user,date } = req.body;
-    const post =await Post.findByIdAndUpdate(id,{...req.body},{new:true});
+    const post =await Post.findByIdAndUpdate(id,{body},{new:true});
 
-    res.send(Post);
+    res.send(post);
 }
 
 const deletePost =async (req : express.Request, res : express.Response)=>{
@@ -21,17 +22,17 @@ const deletePost =async (req : express.Request, res : express.Response)=>{
     res.send(post);
 }
 
-const findPost =async (req : express.Request, res : express.Response)=>{
+const findUserPosts =async (req : express.Request, res : express.Response)=>{
     const {id} = req.params; 
-    const post =await Post.findById(id); 
-    res.send(post);
+    const result = await User.findById(id).populate("posts");
+    res.send(result.posts);
 };
 
 const findPosts =async (req : express.Request, res : express.Response)=>{
      
-    const post =await Post.findById({}); 
-    res.send(post);
+    const posts =await Post.find({}); 
+    res.send(posts);
 };
 
 
-export {createPost, updatePost, deletePost,findPosts,findPost}
+export {createPost, updatePost, deletePost,findPosts,findUserPosts }
