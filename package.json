@@ -1,10 +1,11 @@
 {
-  "name": "task01",
+  "name": "social_appher",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node ./build/index.js",
+    "postinstall": "tsc",
     "startNode": "ts-node index.ts",
     "dev": "nodemon -e ts --exec \"npm run startNode\" ",
     "build": "tsc"
