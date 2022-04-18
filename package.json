@@ -6,19 +6,23 @@
   "scripts": {
     "start": "node ./build/index.js",
     "startNode": "ts-node index.ts",
-    "dev": "nodemon --exec \"npm run startNode\" ",
+    "dev": "nodemon -e ts --exec \"npm run startNode\" ",
     "build": "tsc"
+
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "moment": "^2.29.2",
     "mongoose": "^6.2.7",
     "multer": "^1.4.4"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/multer": "^1.4.7",
     "@types/node": "^17.0.22",
