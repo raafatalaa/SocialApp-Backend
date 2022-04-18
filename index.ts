@@ -21,7 +21,6 @@ app.use(express.static(path.join(__dirname)));
 app.use(cors());
 app.use(express.json());
 app.use('/uploads',express.static('./uploads'));
-app.use("/scripts", express.static(__dirname + '/scripts'));
 
 app.use('/api/user',userRoute,()=>console.log('api connected'));
 app.use('/api/post',postRoute,()=>console.log('posts done'))
