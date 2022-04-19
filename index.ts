@@ -26,4 +26,8 @@ app.use('/api/user',userRoute,()=>console.log('api connected'));
 app.use('/api/post',postRoute,()=>console.log('posts done'))
 app.use(errorHandler);
 
-app.listen(process.env.PORT||5000,()=>console.log('Listening to port 5000'));
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    res.status(500).send('Internal server error')
+  })
+
+app.listen(`${process.env.Port}`, () => console.log(`listening to port ${process.env.Port}`))

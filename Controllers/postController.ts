@@ -2,7 +2,7 @@ import express from 'express';
 import Post from '../Models/post';
 import User from '../Models/user';
 
-const createPost = async (req : express.Request, res : express.Response) =>{
+const createPost = async (req : express.Request, res : express.Response,next:express.NextFunction) =>{
     const user =await User.findById(req.body.postedBy).then(user=>user.name);
     const post =await Post.create({...req.body,image: req.file?.path,userName:user}); 
     console.log(req.file?.path);  
