@@ -13,7 +13,7 @@ import path from 'path';
 
 const app = express();
 
-mongoose.connect(`${process.env.MONGODB_URI}`,()=> console.log('Connected to DB'))
+mongoose.connect(`${process.env.MONGODB_URI || "mongodb://localhost/user1"}`,()=> console.log('Connected to DB'))
 
 
                  
