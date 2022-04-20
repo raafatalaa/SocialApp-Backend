@@ -13,10 +13,15 @@ import path from 'path';
 
 const app = express();
 
+
+try{
 mongoose.connect(`${process.env.MONGODB_URI || "mongodb://localhost/user1"}`,()=> console.log('Connected to DB'))
+}
+catch(err){
+    console.log(err)
+}
 
-
-                 
+app.use()                
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use(express.json());
