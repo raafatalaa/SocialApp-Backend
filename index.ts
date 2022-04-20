@@ -6,7 +6,6 @@ import postRoute from './Routers/postRouter';
 import errorHandler from './handleError';
 import cors from 'cors';
 import path from 'path';
-const server = require('http').createServer();
 
 //import Memebers from './data.json'
 
@@ -31,4 +30,4 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
     res.status(500).send('Internal server error')
   })
 
-server.listen(`${process.env.Port}`, () => console.log(`listening to port ${process.env.Port}`))
+app.listen(`${process.env.Port}`, () => console.log(`listening to port ${process.env.Port}`))
